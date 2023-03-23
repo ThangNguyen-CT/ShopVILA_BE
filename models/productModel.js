@@ -39,8 +39,7 @@ var productSchema = new mongoose.Schema({
     },
     images: {
         type: Array,
-        public_id: String,
-        url: String,
+        require
     },
     numViews: {
         type: Number,
