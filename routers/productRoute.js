@@ -11,7 +11,6 @@ const {
 const { blogImgResize, uploadPhoto } = require("../middlewares/uploadImages");
 router.post("/",
     uploadPhoto.array("images", 4),
-    blogImgResize,
     createProduct);
 router.put("/:id", updateProduct);
 router.delete("/:id", deleteProduct),
