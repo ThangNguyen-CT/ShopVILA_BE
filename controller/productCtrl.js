@@ -23,7 +23,6 @@ const createProduct = asyncHandler(async(req, res) => {
             const newpath = await uploader(path);
             console.log(newpath);
             urls.push(newpath);
-            // fs.unlinkSync(path);
         }
         // add urls to newImg here
         newProduct.images = urls;
