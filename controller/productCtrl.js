@@ -10,11 +10,10 @@ const createProduct = asyncHandler(async(req, res) => {
         if (req.body.title) {
             req.body.slug = slugify(req.body.title);
         }
-        const newProduct = await Product.create(req.body);
-        if (!req.files) {
-            // handle error here
-            throw new Error("No files were uploaded.");
-        }
+        // if (!req.files) {
+        //     // handle error here
+        //     throw new Error("No files were uploaded.");
+        // }
         const uploader = (path) => cloudinaryUploadImg(path, "images");
         const urls = [];
         const files = req.files;
@@ -24,10 +23,11 @@ const createProduct = asyncHandler(async(req, res) => {
             console.log(newpath);
             urls.push(newpath);
         }
+        const newProduct = await Product.create(req.body);
         // add urls to newImg here
         newProduct.images = urls;
         await newProduct.save();
-        res.status(200).json(newProduct);
+        res.status(200).json();
     } catch (error) {
         throw new Error(error);
     }
@@ -54,7 +54,7 @@ const deleteProduct = asyncHandler(async(req, res) => {
     validateMongoDbId(id);
     try {
         const deleteProduct = await Product.findOneAndDelete(id);
-        res.status(200).json("Deleted Success");
+        res.json(deleteProduct);
     } catch (error) {
         throw new Error(error);
     }

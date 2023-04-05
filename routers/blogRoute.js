@@ -1,32 +1,32 @@
 const express = require("express");
 const {
-  createBlog,
-  updateBlog,
-  getBlog,
-  getAllBlogs,
-  deleteBlog,
-  uploadImages,
+    createBlog,
+    updateBlog,
+    getBlog,
+    getAllBlogs,
+    deleteBlog,
+    uploadImages,
 } = require("../controller/blogCtrl");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 const { blogImgResize, uploadPhoto } = require("../middlewares/uploadImages");
 const router = express.Router();
 
 router.post("/",
-  uploadPhoto.array("images", 2),
-  blogImgResize,
-  createBlog);
+    uploadPhoto,
+    blogImgResize,
+    createBlog);
 router.put(
-  "/upload/:id",
-  uploadPhoto.array("images", 2),
-  blogImgResize,
-  uploadImages
+    "/upload/:id",
+    uploadPhoto,
+    blogImgResize,
+    uploadImages
 );
 
-router.put("/:id",  updateBlog);
+router.put("/:id", updateBlog);
 
 router.get("/:id", getBlog);
 router.get("/", getAllBlogs);
 
-router.delete("/:id",  deleteBlog);
+router.delete("/:id", deleteBlog);
 
 module.exports = router;
