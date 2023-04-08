@@ -34,7 +34,7 @@ const createProduct = asyncHandler(async(req, res) => {
 });
 
 const updateProduct = asyncHandler(async(req, res) => {
-    const id = req.params;
+    const id = req.params.id;
     validateMongoDbId(id);
     try {
         if (req.body.title) {
