@@ -81,11 +81,26 @@ const getAllProduct = asyncHandler(async(req, res) => {
         const queryObj = {...req.query };
         const excludeFields = ["page", "sort", "limit", "fields"];
         excludeFields.forEach((el) => delete queryObj[el]);
+        if (queryObj.price) {
+            const priceRanges = queryObj.price.split(",");
+            const orQuery = priceRanges.map(range => {
+                const [min, max] = range.split("-");
+                return {
+                    price: {
+                        gte: Number(min),
+                        lte: Number(max)
+                    }
+                }
+            });
+
+            queryObj["$or"] = orQuery;
+            delete queryObj.price;
+        }
+
         let queryStr = JSON.stringify(queryObj);
         queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
-
+        console.log((queryStr))
         let query = Product.find(JSON.parse(queryStr));
-
         // Sorting
         //xep sap theo truong
 
