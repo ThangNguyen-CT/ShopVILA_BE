@@ -7,7 +7,6 @@ const asyncHandler = require("express-async-handler");
 const createOrder = asyncHandler(async(req, res) => {
     try {
         const { products, paymentIntent, orderStatus, sex, address, name, e, m, totalprice } = req.body;
-
         // Tạo một danh sách sản phẩm từ các sản phẩm được gửi trong yêu cầu
         let productItems = [];
         for (let i = 0; i < products.length; i++) {
@@ -17,7 +16,6 @@ const createOrder = asyncHandler(async(req, res) => {
                 count: products[i].count,
             });
         }
-
         // Tạo một đơn hàng mới
         const order = new Order({
             products: productItems,
@@ -30,7 +28,6 @@ const createOrder = asyncHandler(async(req, res) => {
             m,
             totalprice
         });
-
         // Lưu đơn hàng mới vào cơ sở dữ liệu
         const savedOrder = await order.save();
         res.json(savedOrder);
