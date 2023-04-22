@@ -42,6 +42,10 @@ var orderSchema = new mongoose.Schema({
     },
     des: {
         type: String
+    },
+    totalprice: {
+        type: Number,
+        required: true
     }
 }, {
     timestamps: true,
