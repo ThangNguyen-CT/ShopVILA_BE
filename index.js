@@ -7,7 +7,7 @@ const dotenv = require("dotenv").config();
 const PORT = process.env.PORT || 4000;
 const productRoter = require('./routers/productRoute');
 const authRoter = require('./routers/authRoute.js');
-const orderRouter = require('./routers/orderRoute');
+const orderRouter = require('./rotuters/orderRoute');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 app.use(cookieParser());
