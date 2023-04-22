@@ -1,74 +1,51 @@
 const mongoose = require("mongoose"); // Erase if already required
 
 // Declare the Schema of the Mongo model
-var orderSchema = new mongoose.Schema(
-  {
-    products: [
-      {
+var orderSchema = new mongoose.Schema({
+    products: [{
         product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product",
         },
         count: Number,
-      },
-    ],
+    }, ],
     paymentIntent: {
-      type: String,
-      default: "Cash on delivery",
-      enum: [
-        "Cash on delivery",
-        "Bank transfers",
-      ],
+        type: String,
     },
-    statusPayment:{
-      type: String,
-      default: "No",
-      enum: [
-        "No",
-        "Yes",
-      ],
+    statusPayment: {
+        type: String,
+        default: "No"
     },
     orderStatus: {
-      type: String,
-      default: "Not Processed",
-      enum: [
-        "Not Processed",
-        "Cash on Delivery",
-        "Processing",
-        "Dispatched",
-        "Cancelled",
-        "Delivered",
-      ],
+        type: String,
+        default: "Not Processed",
     },
-    sex:{
-      type: String,
-      default: "Man",
-      enum: [
-        "Man",
-        "Woman",
-      ]
+    sex: {
+        type: String,
+        default: "Male",
     },
     address: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     name: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     e: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     m: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
-  },
-  {
+    des: {
+        type: String
+    }
+}, {
     timestamps: true,
-  }
-);
+});
 
 //Export the model
 module.exports = mongoose.model("Order", orderSchema);
