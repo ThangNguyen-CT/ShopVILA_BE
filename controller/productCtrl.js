@@ -5,6 +5,13 @@ const slugify = require("slugify");
 const validateMongoDbId = require('../utils/validateMongodb')
 const { cloudinaryUploadImg, cloudinaryDeleteImg } = require("../utils/couldinary");
 const fs = require("fs");
+
+const search = asyncHandler(async(req, res) => {
+    const query = req.query.search; // Lấy tham số tìm kiếm từ URL
+    const products = await Product.find({ title: { $regex: query, $options: 'i' } });
+    res.json(products);
+});
+
 const createProduct = asyncHandler(async(req, res) => {
     try {
         if (req.body.title) {
@@ -174,4 +181,5 @@ module.exports = {
     updateProduct,
     deleteProduct,
     addToWishlist,
+    search
 };

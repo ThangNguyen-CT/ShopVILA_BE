@@ -7,13 +7,15 @@ const {
     deleteProduct,
     getaProduct,
     getAllProduct,
+    search
 } = require('../controller/productCtrl');
 const { blogImgResize, uploadPhoto } = require("../middlewares/uploadImages");
 router.post("/",
     uploadPhoto,
     createProduct);
 router.put("/:id", updateProduct);
-router.delete("/:id", deleteProduct),
-    router.get('/:id', getaProduct),
-    router.get('/', getAllProduct)
+router.delete("/:id", deleteProduct);
+router.get('/search', search);
+router.get('/:id', getaProduct);
+router.get('/', getAllProduct);
 module.exports = router;
