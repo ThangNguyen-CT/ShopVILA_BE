@@ -14,11 +14,11 @@ var orderSchema = new mongoose.Schema({
     },
     statusPayment: {
         type: String,
-        default: "No"
+        default: "Chưa thanh toán"
     },
     orderStatus: {
         type: String,
-        default: "Not Processed",
+        default: "Đang xử lý",
     },
     sex: {
         type: String,
