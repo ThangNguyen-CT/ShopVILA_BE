@@ -22,7 +22,7 @@ var orderSchema = new mongoose.Schema({
     },
     sex: {
         type: String,
-        default: "Male",
+        default: "Nam",
     },
     address: {
         type: String,
