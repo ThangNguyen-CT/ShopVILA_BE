@@ -173,7 +173,6 @@ const addToWishlist = asyncHandler(async(req, res) => {
     }
 });
 
-
 module.exports = {
     createProduct,
     getaProduct,
@@ -181,5 +180,5 @@ module.exports = {
     updateProduct,
     deleteProduct,
     addToWishlist,
-    search
+    search,
 };
