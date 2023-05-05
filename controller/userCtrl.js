@@ -141,6 +141,7 @@ const updateUser = asynchandler(async (req, res) =>{
         lastname: req?.body?.lastname,
         email: req?.body?.email,
         mobile: req?.body?.mobile,
+        role: req?.body?.role,
       },
       {
         new: true,
