@@ -28,14 +28,14 @@ var userSchema = new mongoose.Schema({
             type: String,
             default: 'user',
         },
-        // cart:{
-        //   type: Array,
-        //   default: [],
-        // },
+        cart: {
+            type: Array,
+            default: [],
+        },
         address: {
             type: String,
         },
-        // wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
+        wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
         refreshToken: {
             type: String,
         },
