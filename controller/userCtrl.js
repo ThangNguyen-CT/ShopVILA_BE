@@ -131,7 +131,7 @@ const logout = asynchandler(async (req, res) => {
 
 //update
 const updateUser = asynchandler(async (req, res) =>{
-  const { _id } = req.user;
+  const _id = req.params.id;
  
   try {
     const updatedUser = await User.findByIdAndUpdate(
@@ -141,7 +141,6 @@ const updateUser = asynchandler(async (req, res) =>{
         lastname: req?.body?.lastname,
         email: req?.body?.email,
         mobile: req?.body?.mobile,
-        role: req?.body?.role,
       },
       {
         new: true,

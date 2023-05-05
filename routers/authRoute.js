@@ -18,7 +18,7 @@ router.get('/logout', logout);
 router.get("/refresh", handleRefreshToken);
 router.post('/loginAdmin', loginAdmin);
 
-router.put('/:id', authMiddleware, isAdmin, updateUser);
+router.put('/:id', updateUser);
 router.get('/all-user', authMiddleware, isAdmin, getallUser);
 
 router.get('/:id', authMiddleware, isAdmin, getUser);
