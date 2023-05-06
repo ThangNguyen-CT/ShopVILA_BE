@@ -76,9 +76,9 @@ const getOrderByUserId = asyncHandler(async(req, res) => {
     }
 });
 const updateOrderStatus = asyncHandler(async(req, res) => {
-    const { id } = req.params;
+    const _id = req.params.id;
     try {
-        const updateOrderStatus = await Order.findOneAndUpdate({ id }, req.body, {
+        const updateOrderStatus = await Order.findByIdAndUpdate(_id, req.body, {
             new: true,
         });
         res.json(updateOrderStatus);
