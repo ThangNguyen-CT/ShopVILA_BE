@@ -12,7 +12,7 @@ const {
     handleRefreshToken,
     logout,
 } = require('../controller/userCtrl')
-router.post('/register', createUser);
+router.post('/register', authMiddleware, isAdmin, createUser);
 router.post('/login', loginUserCrl);
 router.get('/logout', logout);
 router.get("/refresh", handleRefreshToken);
