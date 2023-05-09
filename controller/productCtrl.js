@@ -58,7 +58,7 @@ const deleteProduct = asyncHandler(async(req, res) => {
     const id = req.params.id;
     validateMongoDbId(id);
     try {
-        const deleteProduct = await Product.findOneAndDelete(id);
+        const deleteProduct = await Product.findByIdAndDelete(id);
         res.json(deleteProduct);
     } catch (error) {
         throw new Error(error);
@@ -144,7 +144,7 @@ const getAllProduct = asyncHandler(async(req, res) => {
     }
 });
 const addToWishlist = asyncHandler(async(req, res) => {
-    const { _id } = req.user._id;
+    const { _id } = req.user.id;
     const { prodId } = req.body;
     try {
         const user = await User.findById(_id);
